@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "192692337734",
+    "project_id": "awesome1111meow",
+    "storage_bucket": "awesome1111meow.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192692337734:android:b3f47aaf9da2b4e249de47",
+        "android_client_info": {
+          "package_name": "com.example.attendancechecker2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMhTOOVBDM6bgxPIsBMTRpzDcP_-1BgiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192692337734:android:6c03025589917c9449de47",
+        "android_client_info": {
+          "package_name": "com.example.attendancechecker3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMhTOOVBDM6bgxPIsBMTRpzDcP_-1BgiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

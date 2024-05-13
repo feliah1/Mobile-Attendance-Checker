@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FInal Project Attendance Checker"
+rootProject.name = "attendance Checker 3"
 include(":app")
  
