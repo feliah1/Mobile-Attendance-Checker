@@ -107,7 +107,8 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/back_button"
-                android:text="Add Your Course"
+                android:textColor="@color/black"
+                android:text="Add Employee"
                 android:textAllCaps="false" />
 
 

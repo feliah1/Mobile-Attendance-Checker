@@ -44,7 +44,7 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
         // setting data to our recycler view item on below line.
         CourseRVModal courseRVModal = courseRVModalArrayList.get(position);
         holder.courseTV.setText(courseRVModal.getCourseName());
-        holder.coursePriceTV.setText("Rs. " + courseRVModal.getCoursePrice());
+        holder.courseBestSuitedFor.setText(courseRVModal.getBestSuitedFor());
         // adding animation to recycler view item on below line.
         setAnimation(holder.itemView, position);
         holder.courseIV.setOnClickListener(new View.OnClickListener() {
@@ -73,14 +73,14 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
         // creating variable for our image view and text view on below line.
         private final ImageView courseIV;
         private final TextView courseTV;
-        private final TextView coursePriceTV;
+        private final TextView courseBestSuitedFor;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // initializing all our variables on below line.
             courseIV = itemView.findViewById(R.id.idIVCourse);
             courseTV = itemView.findViewById(R.id.idTVCOurseName);
-            coursePriceTV = itemView.findViewById(R.id.idTVCousePrice);
+            courseBestSuitedFor = itemView.findViewById(R.id.idTVSuitedFor);
         }
     }
 

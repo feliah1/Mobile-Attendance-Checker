@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/idIVCourse"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="20dp"
             android:scaleType="centerCrop" />
 
         <!--text view for course name-->
@@ -28,17 +28,17 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/idIVCourse"
             android:layout_margin="3dp"
-            android:layout_toStartOf="@id/idTVCousePrice"
-            android:layout_toLeftOf="@id/idTVCousePrice"
+            android:layout_toStartOf="@id/idTVSuitedFor"
+            android:layout_toLeftOf="@id/idTVSuitedFor"
             android:padding="4dp"
-            android:text="Course Name"
+            android:text="Name"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold" />
 
         <!--text view for course price-->
         <TextView
-            android:id="@+id/idTVCousePrice"
+            android:id="@+id/idTVSuitedFor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/idIVCourse"
@@ -47,7 +47,7 @@
             android:layout_margin="3dp"
             android:gravity="center"
             android:padding="4dp"
-            android:text="Price"
+            android:text="Last Name"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold" />

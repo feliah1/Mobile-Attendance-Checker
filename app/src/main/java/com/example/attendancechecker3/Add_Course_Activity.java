@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class Add_Course_Activity extends AppCompatActivity {
 
     private TextInputEditText courseNameEdt, coursePriceEdt, bestSuitedEdt;
@@ -46,9 +48,9 @@ public class Add_Course_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 loadingPB.setVisibility(View.VISIBLE);
                 // getting data from our edit text.
-                String courseName = courseNameEdt.getText().toString();
-                String coursePrice = coursePriceEdt.getText().toString();
-                String bestSuited = bestSuitedEdt.getText().toString();
+                String courseName = Objects.requireNonNull(courseNameEdt.getText()).toString();
+                String coursePrice = Objects.requireNonNull(coursePriceEdt.getText()).toString();
+                String bestSuited = Objects.requireNonNull(bestSuitedEdt.getText()).toString();
                 courseID = courseName;
                 // on below line we are passing all data to our modal class.
                 CourseRVModal courseRVModal = new CourseRVModal(courseID, courseName, coursePrice, bestSuited);

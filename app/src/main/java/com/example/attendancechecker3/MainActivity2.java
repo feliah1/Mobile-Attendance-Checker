@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -178,7 +179,13 @@ public class MainActivity2 extends AppCompatActivity implements CourseRVAdapter.
         final BottomSheetDialog bottomSheetTeachersDialog = new BottomSheetDialog(this, R.style.BottomSheetDialogTheme);
 
         // Inflating our layout file for our bottom sheet.
-        View layout = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_layout, homeRL);
+        View layout = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_layout, null, false);
+
+        // Ensure the view is not already attached to another parent
+        ViewGroup parent = (ViewGroup) layout.getParent();
+        if (parent != null) {
+            parent.removeView(layout);
+        }
 
         // Setting content view for bottom sheet.
         bottomSheetTeachersDialog.setContentView(layout);
@@ -195,14 +202,14 @@ public class MainActivity2 extends AppCompatActivity implements CourseRVAdapter.
         TextView courseNameTV = layout.findViewById(R.id.idTVCourseName);
         TextView suitedForTV = layout.findViewById(R.id.idTVSuitedFor);
         TextView priceTV = layout.findViewById(R.id.idTVCoursePrice);
-        ImageView courseIV = layout.findViewById(R.id.idIVCourse);
-        Button viewBtn = layout.findViewById(R.id.idBtnVIewDetails);
+//        ImageView courseIV = layout.findViewById(R.id.idIVCourse);
+//        Button viewBtn = layout.findViewById(R.id.idBtnVIewDetails);
         Button editBtn = layout.findViewById(R.id.idBtnEditCourse);
 
         // Setting data to different views.
         courseNameTV.setText(modal.getCourseName());
-        suitedForTV.setText("Suited for " + modal.getBestSuitedFor());
-        priceTV.setText("Rs." + modal.getCoursePrice());
+        suitedForTV.setText(modal.getBestSuitedFor());
+        priceTV.setText(modal.getCoursePrice());
 
         // Adding click listener for the edit button.
         editBtn.setOnClickListener(v -> {
@@ -213,17 +220,18 @@ public class MainActivity2 extends AppCompatActivity implements CourseRVAdapter.
         });
 
         // Adding click listener for the view button.
-        viewBtn.setOnClickListener(v -> {
-            // Navigating to the browser for displaying course details from its URL.
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(modal.getCourseName()));
-            startActivity(i);
-        });
+//        viewBtn.setOnClickListener(v -> {
+//            // Navigating to the browser for displaying course details from its URL.
+//            Intent i = new Intent(Intent.ACTION_VIEW);
+//            i.setData(Uri.parse(modal.getCourseName()));
+//            startActivity(i);
+//        });
 
         // Adding an OnDismissListener to release any resources when the dialog is dismissed.
         bottomSheetTeachersDialog.setOnDismissListener(dialog -> {
             // Perform any resource cleanup here if needed.
         });
     }
+
 
 }

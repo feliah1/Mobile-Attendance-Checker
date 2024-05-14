@@ -6,13 +6,9 @@ import android.os.Parcelable;
 public class CourseRVModal implements Parcelable {
     // creating variables for our different fields.
     private String courseName;
-    private String courseDescription;
     private String coursePrice;
     private String bestSuitedFor;
     private String courseId;
-
-    public CourseRVModal(String courseID, String courseName, String coursePrice, String bestSuited) {
-    }
 
 
     public String getCourseId() {
@@ -32,7 +28,6 @@ public class CourseRVModal implements Parcelable {
     protected CourseRVModal(Parcel in) {
         courseName = in.readString();
         courseId = in.readString();
-        courseDescription = in.readString();
         coursePrice = in.readString();
         bestSuitedFor = in.readString();
     }
@@ -58,14 +53,6 @@ public class CourseRVModal implements Parcelable {
         this.courseName = courseName;
     }
 
-    public String getCourseDescription() {
-        return courseDescription;
-    }
-
-    public void setCourseDescription(String courseDescription) {
-        this.courseDescription = courseDescription;
-    }
-
     public String getCoursePrice() {
         return coursePrice;
     }
@@ -82,10 +69,9 @@ public class CourseRVModal implements Parcelable {
         this.bestSuitedFor = bestSuitedFor;
     }
 
-    public CourseRVModal(String courseId, String courseName, String courseDescription, String coursePrice, String bestSuitedFor, String courseImg, String courseLink) {
+    public CourseRVModal(String courseId, String courseName, String coursePrice, String bestSuitedFor) {
         this.courseName = courseName;
         this.courseId = courseId;
-        this.courseDescription = courseDescription;
         this.coursePrice = coursePrice;
         this.bestSuitedFor = bestSuitedFor;
     }
@@ -99,7 +85,6 @@ public class CourseRVModal implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(courseName);
         dest.writeString(courseId);
-        dest.writeString(courseDescription);
         dest.writeString(coursePrice);
         dest.writeString(bestSuitedFor);
     }

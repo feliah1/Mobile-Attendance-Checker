@@ -42,7 +42,7 @@ public class EditCourseActivity extends AppCompatActivity {
         coursePriceEdt = findViewById(R.id.idEdtCoursePrice);
         bestSuitedEdt = findViewById(R.id.idEdtSuitedFor);
         loadingPB = findViewById(R.id.idPBLoading);
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance("https://awesome1111meow-default-rtdb.asia-southeast1.firebasedatabase.app");
         // on below line we are getting our modal class on which we have passed.
         courseRVModal = getIntent().getParcelableExtra("course");
         Button deleteCourseBtn = findViewById(R.id.idBtnDeleteCourse);
