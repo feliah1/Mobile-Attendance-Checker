@@ -35,18 +35,8 @@ public class Login extends AppCompatActivity {
         userNameEdt = findViewById(R.id.idEdtUserName);
         passwordEdt = findViewById(R.id.idEdtPassword);
         Button loginBtn = findViewById(R.id.idBtnLogin);
-        TextView newUserTV = findViewById(R.id.idTVNewUser);
         mAuth = FirebaseAuth.getInstance();
         loadingPB = findViewById(R.id.idPBLoading);
-        // adding click listener for our new user tv.
-        newUserTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // on below line opening a login activity.
-//                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
-//                startActivity(i);
-            }
-        });
 
         // adding on click listener for our login button.
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +62,7 @@ public class Login extends AppCompatActivity {
                             loadingPB.setVisibility(View.GONE);
                             Toast.makeText(Login.this, "Login Successful..", Toast.LENGTH_SHORT).show();
                             // on below line we are opening our mainactivity2.
-                            Intent i = new Intent(Login.this, MainActivity.class);
+                            Intent i = new Intent(Login.this, MainActivity2.class);
                             startActivity(i);
                             finish();
                         } else {
@@ -95,7 +85,7 @@ public class Login extends AppCompatActivity {
         if (user != null) {
             // if the user is not null then we are
             // opening a main activity on below line.
-            Intent i = new Intent(Login.this, MainActivity.class);
+            Intent i = new Intent(Login.this, MainActivity2.class);
             startActivity(i);
             this.finish();
         }

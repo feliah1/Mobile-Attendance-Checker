@@ -24,7 +24,7 @@ public class EditCourseActivity extends AppCompatActivity {
 
     // creating variables for our edit text, firebase database,
     // database reference, course rv modal,progress bar.
-    private TextInputEditText courseNameEdt, courseDescEdt, coursePriceEdt, bestSuitedEdt, courseImgEdt, courseLinkEdt;
+    private TextInputEditText courseNameEdt, coursePriceEdt, bestSuitedEdt;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     CourseRVModal courseRVModal;
@@ -39,11 +39,8 @@ public class EditCourseActivity extends AppCompatActivity {
         // initializing all our variables on below line.
         Button addCourseBtn = findViewById(R.id.idBtnAddCourse);
         courseNameEdt = findViewById(R.id.idEdtCourseName);
-        courseDescEdt = findViewById(R.id.idEdtCourseDescription);
         coursePriceEdt = findViewById(R.id.idEdtCoursePrice);
         bestSuitedEdt = findViewById(R.id.idEdtSuitedFor);
-        courseImgEdt = findViewById(R.id.idEdtCourseImageLink);
-        courseLinkEdt = findViewById(R.id.idEdtCourseLink);
         loadingPB = findViewById(R.id.idPBLoading);
         firebaseDatabase = FirebaseDatabase.getInstance();
         // on below line we are getting our modal class on which we have passed.
@@ -55,9 +52,6 @@ public class EditCourseActivity extends AppCompatActivity {
             courseNameEdt.setText(courseRVModal.getCourseName());
             coursePriceEdt.setText(courseRVModal.getCoursePrice());
             bestSuitedEdt.setText(courseRVModal.getBestSuitedFor());
-            courseImgEdt.setText(courseRVModal.getCourseImg());
-            courseLinkEdt.setText(courseRVModal.getCourseLink());
-            courseDescEdt.setText(courseRVModal.getCourseDescription());
             courseID = courseRVModal.getCourseId();
         }
 
@@ -71,20 +65,14 @@ public class EditCourseActivity extends AppCompatActivity {
                 loadingPB.setVisibility(View.VISIBLE);
                 // on below line we are getting data from our edit text.
                 String courseName = courseNameEdt.getText().toString();
-                String courseDesc = courseDescEdt.getText().toString();
                 String coursePrice = coursePriceEdt.getText().toString();
                 String bestSuited = bestSuitedEdt.getText().toString();
-                String courseImg = courseImgEdt.getText().toString();
-                String courseLink = courseLinkEdt.getText().toString();
                 // on below line we are creating a map for
                 // passing a data using key and value pair.
                 Map<String, Object> map = new HashMap<>();
                 map.put("courseName", courseName);
-                map.put("courseDescription", courseDesc);
                 map.put("coursePrice", coursePrice);
                 map.put("bestSuitedFor", bestSuited);
-                map.put("courseImg", courseImg);
-                map.put("courseLink", courseLink);
                 map.put("courseId", courseID);
 
                 // on below line we are calling a database reference on

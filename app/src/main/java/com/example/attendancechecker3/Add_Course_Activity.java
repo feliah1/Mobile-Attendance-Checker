@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Add_Course_Activity extends AppCompatActivity {
 
-    private TextInputEditText courseNameEdt, courseDescEdt, coursePriceEdt, bestSuitedEdt, courseImgEdt, courseLinkEdt;
+    private TextInputEditText courseNameEdt, coursePriceEdt, bestSuitedEdt;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private ProgressBar loadingPB;
@@ -34,13 +34,10 @@ public class Add_Course_Activity extends AppCompatActivity {
         // firebase database, database reference, progress bar.
         Button addCourseBtn = findViewById(R.id.idBtnAddCourse);
         courseNameEdt = findViewById(R.id.idEdtCourseName);
-        courseDescEdt = findViewById(R.id.idEdtCourseDescription);
         coursePriceEdt = findViewById(R.id.idEdtCoursePrice);
         bestSuitedEdt = findViewById(R.id.idEdtSuitedFor);
-        courseImgEdt = findViewById(R.id.idEdtCourseImageLink);
-        courseLinkEdt = findViewById(R.id.idEdtCourseLink);
         loadingPB = findViewById(R.id.idPBLoading);
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance("https://awesome1111meow-default-rtdb.asia-southeast1.firebasedatabase.app");
         // on below line creating our database reference.
         databaseReference = firebaseDatabase.getReference("Courses");
         // adding click listener for our add course button.
@@ -50,14 +47,11 @@ public class Add_Course_Activity extends AppCompatActivity {
                 loadingPB.setVisibility(View.VISIBLE);
                 // getting data from our edit text.
                 String courseName = courseNameEdt.getText().toString();
-                String courseDesc = courseDescEdt.getText().toString();
                 String coursePrice = coursePriceEdt.getText().toString();
                 String bestSuited = bestSuitedEdt.getText().toString();
-                String courseImg = courseImgEdt.getText().toString();
-                String courseLink = courseLinkEdt.getText().toString();
                 courseID = courseName;
                 // on below line we are passing all data to our modal class.
-                CourseRVModal courseRVModal = new CourseRVModal(courseID, courseName, courseDesc, coursePrice, bestSuited, courseImg, courseLink);
+                CourseRVModal courseRVModal = new CourseRVModal(courseID, courseName, coursePrice, bestSuited);
                 // on below line we are calling a add value event
                 // to pass data to firebase database.
                 databaseReference.addValueEventListener(new ValueEventListener() {
@@ -66,15 +60,15 @@ public class Add_Course_Activity extends AppCompatActivity {
                         // on below line we are setting data in our firebase database.
                         databaseReference.child(courseID).setValue(courseRVModal);
                         // displaying a toast message.
-                        Toast.makeText(Add_Course_Activity.this, "Course Added..", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Add_Course_Activity.this, "Name Added..", Toast.LENGTH_SHORT).show();
                         // starting a main activity.
-                        startActivity(new Intent(Add_Course_Activity.this, MainActivity.class));
+                        startActivity(new Intent(Add_Course_Activity.this, MainActivity2.class));
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         // displaying a failure message on below line.
-                        Toast.makeText(Add_Course_Activity.this, "Fail to add Course..", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Add_Course_Activity.this, "Fail to add Name..", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

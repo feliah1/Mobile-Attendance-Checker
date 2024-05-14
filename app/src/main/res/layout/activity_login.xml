@@ -76,27 +76,11 @@
         android:textAllCaps="false"
         />
 
-    <!--text view for creating a new account-->
-    <TextView
-        android:id="@+id/idTVNewUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/idBtnLogin"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="New User ? Register Here"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor=" @color/white"
-        android:textSize="18sp" />
-
     <!--progress-bar for loading indicator-->
     <ProgressBar
         android:id="@+id/idPBLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/idTVNewUser"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:indeterminate="true"

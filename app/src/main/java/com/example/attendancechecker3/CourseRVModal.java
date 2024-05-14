@@ -9,9 +9,10 @@ public class CourseRVModal implements Parcelable {
     private String courseDescription;
     private String coursePrice;
     private String bestSuitedFor;
-    private String courseImg;
-    private String courseLink;
     private String courseId;
+
+    public CourseRVModal(String courseID, String courseName, String coursePrice, String bestSuited) {
+    }
 
 
     public String getCourseId() {
@@ -34,8 +35,6 @@ public class CourseRVModal implements Parcelable {
         courseDescription = in.readString();
         coursePrice = in.readString();
         bestSuitedFor = in.readString();
-        courseImg = in.readString();
-        courseLink = in.readString();
     }
 
     public static final Creator<CourseRVModal> CREATOR = new Creator<CourseRVModal>() {
@@ -83,31 +82,12 @@ public class CourseRVModal implements Parcelable {
         this.bestSuitedFor = bestSuitedFor;
     }
 
-    public String getCourseImg() {
-        return courseImg;
-    }
-
-    public void setCourseImg(String courseImg) {
-        this.courseImg = courseImg;
-    }
-
-    public String getCourseLink() {
-        return courseLink;
-    }
-
-    public void setCourseLink(String courseLink) {
-        this.courseLink = courseLink;
-    }
-
-
     public CourseRVModal(String courseId, String courseName, String courseDescription, String coursePrice, String bestSuitedFor, String courseImg, String courseLink) {
         this.courseName = courseName;
         this.courseId = courseId;
         this.courseDescription = courseDescription;
         this.coursePrice = coursePrice;
         this.bestSuitedFor = bestSuitedFor;
-        this.courseImg = courseImg;
-        this.courseLink = courseLink;
     }
 
     @Override
@@ -122,7 +102,5 @@ public class CourseRVModal implements Parcelable {
         dest.writeString(courseDescription);
         dest.writeString(coursePrice);
         dest.writeString(bestSuitedFor);
-        dest.writeString(courseImg);
-        dest.writeString(courseLink);
     }
 }

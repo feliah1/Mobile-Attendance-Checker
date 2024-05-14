@@ -15,7 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:targetApi="31">
-        <activity android:name=".Register"
+        <activity android:name=".MainActivity2"
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".EditCourseActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".Add_Course_Activity"
             android:exported="false"
             android:theme="@style/AppTheme"/>
         <activity
