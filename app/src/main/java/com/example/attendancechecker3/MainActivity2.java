@@ -163,6 +163,17 @@ public class MainActivity2 extends AppCompatActivity implements CourseRVAdapter.
             startActivity(i);
             this.finish();
             return true;
+        } else if (id == R.id.idSetting) {
+            // opening the settings activity
+            Intent i = new Intent(MainActivity2.this, Settings.class);
+            startActivity(i);
+            return true;
+        }
+        else if (id == R.id.idCalendar) {
+            // opening the Calendar for Employee activity
+            Intent i = new Intent(MainActivity2.this, EmployeeCalendar.class);
+            startActivity(i);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

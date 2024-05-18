@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,8 +15,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void startLoginActivity(View view) {
-        Intent intent = new Intent(this, Login.class);
+    public void startTimeOut(View view) {
+        Intent intent = new Intent(this, MainActivityOut.class);
         startActivity(intent);
+    }
+
+    public void timeInClicked(View view) {
+        // Handle the time out logic here
+        Toast.makeText(this, "Time In Clicked", Toast.LENGTH_SHORT).show();
+        // You can add logic to record the time out
     }
 }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    tools:context=".MainActivityOut">
 
     <Button
         android:id="@+id/loginButton"
@@ -45,30 +45,29 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/idTimeIn"
+        android:id="@+id/idTimeOut"
         android:layout_marginTop="28dp"
         android:layout_width="195dp"
         android:layout_height="67dp"
         android:textColor="@color/black"
-        android:text="Time In"
+        android:text="Time Out"
         android:textSize="16sp"
-        android:onClick="timeInClicked"
+        android:onClick="timeOutClicked"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idEmployeeFirstName" />
-
     <Button
-        android:id="@+id/idMoveToTimeOut"
+        android:id="@+id/idMoveToTimeIn"
         android:layout_marginTop="28dp"
         android:layout_width="195dp"
         android:layout_height="67dp"
         android:textColor="@color/black"
-        android:text="Move to Time Out"
+        android:text="Move Time In"
         android:textSize="16sp"
-        android:onClick="startTimeOut"
+        android:onClick="startTimeIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idTimeIn" />
+        app:layout_constraintTop_toBottomOf="@+id/idTimeOut" />
 </androidx.constraintlayout.widget.ConstraintLayout>
