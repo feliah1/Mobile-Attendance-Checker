@@ -20,10 +20,20 @@
         android:textSize="23dp"
         android:layout_alignParentTop="true" />
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_below="@id/student_name_adapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search employees"
+        android:textColor="@color/black"
+        android:background="@color/white" />
+
     <!--recycler view for our data-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRVCourses"
-        android:layout_below="@id/student_name_adapter"
+        android:layout_below="@id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/course_rv_item" />

@@ -1,7 +1,6 @@
 package com.example.attendancechecker3;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,6 +43,7 @@ public class MainActivity2 extends AppCompatActivity implements CourseRVAdapter.
     private ArrayList<CourseRVModal> courseRVModalArrayList;
     private CourseRVAdapter courseRVAdapter;
     private RelativeLayout homeRL;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +62,19 @@ public class MainActivity2 extends AppCompatActivity implements CourseRVAdapter.
         firebaseDatabase = FirebaseDatabase.getInstance("https://awesome1111meow-default-rtdb.asia-southeast1.firebasedatabase.app");
         mAuth = FirebaseAuth.getInstance();
         courseRVModalArrayList = new ArrayList<>();
+        searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                courseRVAdapter.filter(newText);
+                return false;
+            }
+        });
 
         // getting database reference.
         databaseReference = firebaseDatabase.getReference("Courses");
@@ -213,8 +226,6 @@ public class MainActivity2 extends AppCompatActivity implements CourseRVAdapter.
         TextView courseNameTV = layout.findViewById(R.id.idTVCourseName);
         TextView suitedForTV = layout.findViewById(R.id.idTVSuitedFor);
         TextView priceTV = layout.findViewById(R.id.idTVCoursePrice);
-//        ImageView courseIV = layout.findViewById(R.id.idIVCourse);
-//        Button viewBtn = layout.findViewById(R.id.idBtnVIewDetails);
         Button editBtn = layout.findViewById(R.id.idBtnEditCourse);
 
         // Setting data to different views.
@@ -230,19 +241,9 @@ public class MainActivity2 extends AppCompatActivity implements CourseRVAdapter.
             startActivity(i);
         });
 
-        // Adding click listener for the view button.
-//        viewBtn.setOnClickListener(v -> {
-//            // Navigating to the browser for displaying course details from its URL.
-//            Intent i = new Intent(Intent.ACTION_VIEW);
-//            i.setData(Uri.parse(modal.getCourseName()));
-//            startActivity(i);
-//        });
-
         // Adding an OnDismissListener to release any resources when the dialog is dismissed.
         bottomSheetTeachersDialog.setOnDismissListener(dialog -> {
             // Perform any resource cleanup here if needed.
         });
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.example.attendancechecker3;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,16 +33,22 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         AttendanceRVModal attendance = attendanceList.get(position);
         CourseRVModal course = attendance.getCourse();
-        holder.studentName.setText(course != null ? course.getCourseName() : "Loading...");
+
+        if (course != null) {
+            holder.studentName.setText(course.getCourseName());
+            holder.courseBestSuitedFor.setText(course.getBestSuitedFor());
+        } else {
+            holder.studentName.setText("Loading...");
+        }
+
         holder.studentRegNo.setText(attendance.getInTime());
         holder.radioPresent.setChecked("Present".equals(attendance.getStatus()));
         holder.radioAbsent.setChecked("Absent".equals(attendance.getStatus()));
 
-        if (course != null) {
-            holder.courseBestSuitedFor.setText(course.getBestSuitedFor());
-            // Remove the following line
-            // holder.coursePrice.setText(course.getPrice());
-        }
+        // Log the data being set for debugging
+        Log.d("CalendarAdapter", "Student Name: " + holder.studentName.getText());
+        Log.d("CalendarAdapter", "In Time: " + holder.studentRegNo.getText());
+        Log.d("CalendarAdapter", "Status: " + attendance.getStatus());
     }
 
     @Override
@@ -63,8 +70,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
             radioPresent = itemView.findViewById(R.id.radio_present);
             radioAbsent = itemView.findViewById(R.id.radio_absent);
             courseBestSuitedFor = itemView.findViewById(R.id.course_bestSuitedFor);
-            // Remove the following line
-            // coursePrice = itemView.findViewById(R.id.course_price);
         }
     }
 }

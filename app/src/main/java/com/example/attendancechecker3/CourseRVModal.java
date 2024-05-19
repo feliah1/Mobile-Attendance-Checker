@@ -92,4 +92,5 @@ public class CourseRVModal implements Parcelable {
     public String getPrice() {
         return coursePrice;
     }
+
 }

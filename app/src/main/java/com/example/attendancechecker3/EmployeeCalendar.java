@@ -3,6 +3,7 @@ package com.example.attendancechecker3;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView; // Import this instead of android.widget.SearchView
 import android.os.Bundle;
 import android.util.Log;
 
@@ -19,7 +20,10 @@ public class EmployeeCalendar extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CalendarAdapter adapter;
     private List<AttendanceRVModal> attendanceList = new ArrayList<>();
+    private List<AttendanceRVModal> filteredList = new ArrayList<>();
     private DatabaseReference mDatabase;
+    private DatabaseReference coursesRef;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +32,28 @@ public class EmployeeCalendar extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.idCalendar);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CalendarAdapter(attendanceList);
+        adapter = new CalendarAdapter(filteredList);
         recyclerView.setAdapter(adapter);
 
-// Initialize Firebase with the correct URL
+        searchView = findViewById(R.id.searchView); // Correct casting
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return false;
+            }
+        });
+
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://awesome1111meow-default-rtdb.asia-southeast1.firebasedatabase.app");
         mDatabase = database.getReference().child("attendance");
+        coursesRef = database.getReference().child("Courses");
 
-        // Load attendance data from Firebase
         loadAttendanceData();
     }
 
@@ -48,9 +66,10 @@ public class EmployeeCalendar extends AppCompatActivity {
                     AttendanceRVModal attendance = postSnapshot.getValue(AttendanceRVModal.class);
                     if (attendance != null) {
                         attendanceList.add(attendance);
+                    } else {
+                        Log.e("EmployeeCalendar", "Attendance data is null");
                     }
                 }
-                // Fetch course data
                 fetchCourseData();
             }
 
@@ -62,7 +81,6 @@ public class EmployeeCalendar extends AppCompatActivity {
     }
 
     private void fetchCourseData() {
-        DatabaseReference coursesRef = FirebaseDatabase.getInstance("https://awesome1111meow-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("courses");
         coursesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -70,9 +88,13 @@ public class EmployeeCalendar extends AppCompatActivity {
                     String courseId = attendance.getCourseId();
                     CourseRVModal course = dataSnapshot.child(courseId).getValue(CourseRVModal.class);
                     if (course != null) {
-                        attendance.setCourse(course); // Ensure setCourse method is present in AttendanceRVModal
+                        attendance.setCourse(course);
+                    } else {
+                        Log.e("EmployeeCalendar", "Course not found for courseId: " + courseId);
                     }
                 }
+                filteredList.clear();
+                filteredList.addAll(attendanceList);
                 adapter.notifyDataSetChanged();
             }
 
@@ -83,4 +105,13 @@ public class EmployeeCalendar extends AppCompatActivity {
         });
     }
 
+    private void filter(String text) {
+        filteredList.clear();
+        for (AttendanceRVModal item : attendanceList) {
+            if (item.getCourseId().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
 }

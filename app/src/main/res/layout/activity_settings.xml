@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/idRLHome"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/black_shade_1"
-tools:context=".Settings">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/idRLHome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_shade_1"
+    tools:context=".Settings">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,16 +17,10 @@ tools:context=".Settings">
             android:id="@+id/Settingword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:padding="10dp"
             android:text="Admin Settings"
-            android:textAlignment="center"
-            android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="23dp" />
 
-        <!--edit text for course name-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/idTILUserName"
             style="@style/LoginTextInputLayoutStyle"
@@ -53,7 +46,6 @@ tools:context=".Settings">
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--edit text for course price-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/idTILPassword"
             style="@style/LoginTextInputLayoutStyle"
@@ -65,7 +57,6 @@ tools:context=".Settings">
             android:hint="Password"
             android:padding="5dp"
             android:textColorHint="@color/white"
-            app:boxStrokeColor="@color/purple_200"
             app:hintTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -77,8 +68,7 @@ tools:context=".Settings">
                 android:inputType="textImeMultiLine|textMultiLine"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="14sp"
-                app:boxStrokeColor="@color/purple_200" />
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -93,11 +83,8 @@ tools:context=".Settings">
             android:textColor="@color/black"
             android:text="Confirm Changes"
             android:textAllCaps="false" />
-
-
     </LinearLayout>
 
-    <!--progress bar for loading indicator-->
     <ProgressBar
         android:id="@+id/idPBLoading"
         android:layout_width="wrap_content"
@@ -107,5 +94,4 @@ tools:context=".Settings">
         android:indeterminate="true"
         android:indeterminateDrawable="@drawable/progress_back"
         android:visibility="gone" />
-
 </RelativeLayout>

@@ -69,6 +69,9 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
         return courseRVModalArrayList.size();
     }
 
+    public void filter(String newText) {
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // creating variable for our image view and text view on below line.
         private final ImageView courseIV;
