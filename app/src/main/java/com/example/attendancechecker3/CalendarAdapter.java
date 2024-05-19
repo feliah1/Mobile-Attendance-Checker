@@ -3,15 +3,18 @@ package com.example.attendancechecker3;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.attendancechecker3.AttendanceRVModal;
+import com.example.attendancechecker3.R;
+
 import java.util.List;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder> {
-
     private List<AttendanceRVModal> attendanceList;
 
     public CalendarAdapter(List<AttendanceRVModal> attendanceList) {
@@ -21,20 +24,24 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.calendar_rv_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.calendar_rv_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         AttendanceRVModal attendance = attendanceList.get(position);
-//        holder.courseName.setText(attendance.getCourse().getCourseName());
-//        holder.suitedFor.setText(attendance.getCourse().getBestSuitedFor());
-        holder.amountOfDaysPresent.setText(String.valueOf(attendance.getAmountOfDaysPresent()));
-        holder.status.setText(attendance.getStatus());
-        holder.inTime.setText(attendance.getInTime());
-        holder.outTime.setText(attendance.getOutTime());
+        CourseRVModal course = attendance.getCourse();
+        holder.studentName.setText(course != null ? course.getCourseName() : "Loading...");
+        holder.studentRegNo.setText(attendance.getInTime());
+        holder.radioPresent.setChecked("Present".equals(attendance.getStatus()));
+        holder.radioAbsent.setChecked("Absent".equals(attendance.getStatus()));
+
+        if (course != null) {
+            holder.courseBestSuitedFor.setText(course.getBestSuitedFor());
+            // Remove the following line
+            // holder.coursePrice.setText(course.getPrice());
+        }
     }
 
     @Override
@@ -43,21 +50,21 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView courseName;
-        TextView suitedFor;
-        TextView amountOfDaysPresent;
-        TextView status;
-        TextView inTime;
-        TextView outTime;
+        public TextView studentName;
+        public TextView studentRegNo;
+        public RadioButton radioPresent;
+        public RadioButton radioAbsent;
+        public TextView courseBestSuitedFor;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            courseName = itemView.findViewById(R.id.idTVCOurseName);
-            suitedFor = itemView.findViewById(R.id.idTVSuitedFor);
-            amountOfDaysPresent = itemView.findViewById(R.id.idAmountofDaysPresent);
-            status = itemView.findViewById(R.id.idStatus);
-            inTime = itemView.findViewById(R.id.idInTime);
-            outTime = itemView.findViewById(R.id.idOutTime);
+            studentName = itemView.findViewById(R.id.idTVCOurseName);
+            studentRegNo = itemView.findViewById(R.id.student_regNo_adapter);
+            radioPresent = itemView.findViewById(R.id.radio_present);
+            radioAbsent = itemView.findViewById(R.id.radio_absent);
+            courseBestSuitedFor = itemView.findViewById(R.id.course_bestSuitedFor);
+            // Remove the following line
+            // coursePrice = itemView.findViewById(R.id.course_price);
         }
     }
 }

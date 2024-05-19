@@ -40,7 +40,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/idTVSuitedFor"
+                    android:id="@+id/course_bestSuitedFor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
@@ -69,17 +69,19 @@
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/idStatus"
+                <RadioButton
+                    android:id="@+id/radio_present"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:gravity="center"
-                    android:padding="4dp"
-                    android:text="Status: Present"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:text="Present"
+                    android:textColor="@color/white"/>
+
+                <RadioButton
+                    android:id="@+id/radio_absent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Absent"
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
             <LinearLayout
@@ -88,16 +90,29 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/idInTime"
+                    android:id="@+id/idInTimeOutput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
                     android:gravity="center"
                     android:padding="4dp"
-                    android:text="In Time: 01/01/01"
+                    android:text="Time In:  "
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/student_regNo_adapter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="01/01/0001"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
 
                 <TextView
                     android:id="@+id/idOutTime"
@@ -106,7 +121,19 @@
                     android:layout_margin="3dp"
                     android:gravity="center"
                     android:padding="4dp"
-                    android:text="Out Time: 01/01/01"
+                    android:text="Time Out: "
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/idOutTimeOutput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="01/01/0001 "
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />

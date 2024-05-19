@@ -88,4 +88,8 @@ public class CourseRVModal implements Parcelable {
         dest.writeString(coursePrice);
         dest.writeString(bestSuitedFor);
     }
+
+    public String getPrice() {
+        return coursePrice;
+    }
 }

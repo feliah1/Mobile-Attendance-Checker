@@ -4,12 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class AttendanceRVModal implements Parcelable {
+    // Fields
     private String courseId;
     private int amountOfDaysPresent;
     private String status;
     private String inTime;
     private String outTime;
+    private CourseRVModal course;
 
+    // Constructor
     public AttendanceRVModal() {}
 
     public AttendanceRVModal(String courseId, int amountOfDaysPresent, String status, String inTime, String outTime) {
@@ -20,6 +23,7 @@ public class AttendanceRVModal implements Parcelable {
         this.outTime = outTime;
     }
 
+    // Parcelable implementation
     protected AttendanceRVModal(Parcel in) {
         courseId = in.readString();
         amountOfDaysPresent = in.readInt();
@@ -40,6 +44,7 @@ public class AttendanceRVModal implements Parcelable {
         }
     };
 
+    // Getters and Setters
     public String getCourseId() {
         return courseId;
     }
@@ -93,4 +98,13 @@ public class AttendanceRVModal implements Parcelable {
         dest.writeString(inTime);
         dest.writeString(outTime);
     }
+
+    public CourseRVModal getCourse() {
+        return course;
+    }
+
+    public void setCourse(CourseRVModal course) {
+        this.course = course;
+    }
+
 }

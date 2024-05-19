@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="195dp"
+        app:circularflow_radiusInDP="10dp"
         android:layout_height="67dp"
         android:onClick="startLoginActivity"
         android:text="Go to Admin"
@@ -22,7 +24,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="112dp"
         android:text="Please enter your name."
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,13 +48,15 @@
 
     <Button
         android:id="@+id/idTimeIn"
-        android:layout_marginTop="28dp"
         android:layout_width="195dp"
         android:layout_height="67dp"
-        android:textColor="@color/black"
+        android:layout_marginTop="28dp"
         android:text="Time In"
         android:textSize="16sp"
         android:onClick="timeInClicked"
+        android:background="@drawable/round_corner"
+        android:textColor="@color/button_text_color"
+        android:textColorLink="@color/black_shade_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,13 +64,14 @@
 
     <Button
         android:id="@+id/idMoveToTimeOut"
-        android:layout_marginTop="28dp"
         android:layout_width="195dp"
-        android:layout_height="67dp"
-        android:textColor="@color/black"
-        android:text="Move to Time Out"
-        android:textSize="16sp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:text="Proceed to Time Out"
+        android:textSize="13sp"
         android:onClick="startTimeOut"
+        android:textColor="@color/button_text_color"
+        android:background="@drawable/round_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

@@ -17,6 +17,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/addText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Employee"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
             <!--edit text for course name-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idTILCourseName"
@@ -42,7 +51,6 @@
                     android:textColorHint="@color/white"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <!--edit text for course price-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idTILCoursePrice"
