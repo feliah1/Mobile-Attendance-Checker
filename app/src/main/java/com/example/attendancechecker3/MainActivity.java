@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Method to handle time-in button click
     public void timeInClicked(View view) {
-//        String employeeName = ((EditText) findViewById(R.id.idEmployeeFirstName)).getText().toString();
         String courseName = ((EditText) findViewById(R.id.idEmployeeFirstName)).getText().toString(); // Assuming you have an EditText for course name
 
         // Query to get the courseId based on courseName
@@ -47,23 +46,37 @@ public class MainActivity extends AppCompatActivity {
                         AttendanceRVModal attendance = new AttendanceRVModal(courseId, 1, "Present", inTime, "");
 
                         // Save attendance to Firebase
-                        mDatabase.child("attendance").push().setValue(attendance);
+                        mDatabase.child("attendance").push().setValue(attendance).addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                runOnUiThread(() ->
+                                        Toast.makeText(MainActivity.this, "You are now timed in", Toast.LENGTH_SHORT).show()
+                                );
 
-                        // Navigate to CalendarEmployeeActivity
-                        Intent intent = new Intent(MainActivity.this, EmployeeCalendar.class);
-                        startActivity(intent);
+                                // Navigate to CalendarEmployeeActivity
+                                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            } else {
+                                runOnUiThread(() ->
+                                        Toast.makeText(MainActivity.this, "Failed to time in", Toast.LENGTH_SHORT).show()
+                                );
+                            }
+                        });
 
                         // Break the loop as we found the course
                         break;
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Course not found", Toast.LENGTH_SHORT).show();
+                    runOnUiThread(() ->
+                            Toast.makeText(MainActivity.this, "Name not found", Toast.LENGTH_SHORT).show()
+                    );
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(MainActivity.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                runOnUiThread(() ->
+                        Toast.makeText(MainActivity.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show()
+                );
             }
         });
     }
@@ -74,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startTimeOut(View view) {
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, MainActivityOut.class);
         startActivity(intent);
     }
     private String getCurrentTime() {

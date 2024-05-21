@@ -8,6 +8,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.WindowDecorActionBar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.attendancechecker3.AttendanceRVModal;
@@ -42,6 +43,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         }
 
         holder.studentRegNo.setText(attendance.getInTime());
+        holder.studentRegNoOther.setText(attendance.getOutTime());
         holder.radioPresent.setChecked("Present".equals(attendance.getStatus()));
         holder.radioAbsent.setChecked("Absent".equals(attendance.getStatus()));
 
@@ -62,11 +64,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         public RadioButton radioPresent;
         public RadioButton radioAbsent;
         public TextView courseBestSuitedFor;
+        public TextView studentRegNoOther;
 
         public ViewHolder(View itemView) {
             super(itemView);
             studentName = itemView.findViewById(R.id.idTVCOurseName);
             studentRegNo = itemView.findViewById(R.id.student_regNo_adapter);
+            studentRegNoOther = itemView.findViewById(R.id.student_regNo_adapter_other);
             radioPresent = itemView.findViewById(R.id.radio_present);
             radioAbsent = itemView.findViewById(R.id.radio_absent);
             courseBestSuitedFor = itemView.findViewById(R.id.course_bestSuitedFor);
